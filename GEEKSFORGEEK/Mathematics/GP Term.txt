@@ -1,0 +1,5 @@
+double termOfGP(int A,int B,int N)
+{
+    double r=((double)B)/A; //common ratio is given by r=b/a
+    return (A*pow(r,N-1)); //nth term is given by an=a(r^(n-1))
+}

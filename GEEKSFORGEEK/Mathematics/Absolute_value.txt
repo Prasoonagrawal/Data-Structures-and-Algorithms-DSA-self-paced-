@@ -1,0 +1,11 @@
+int absolute(int I) {
+    
+    // if value is negative, then make it positive
+    // by multiplying it with -1
+    if (I < 0)
+        return -1 * I;
+        
+    // else, reutrn the number as it is
+    else
+        return I;
+}

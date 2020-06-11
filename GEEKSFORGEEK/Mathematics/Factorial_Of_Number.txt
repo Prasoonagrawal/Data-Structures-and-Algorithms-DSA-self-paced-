@@ -1,0 +1,9 @@
+long long factorial (int N)
+{
+    long long int ans=1; //answer should be stored in long long as it may overflow the int
+        for(int i=2;i<=N;i++)
+        {
+            ans = ans * i; //calculating the factorial
+        }
+       return ans;
+}
