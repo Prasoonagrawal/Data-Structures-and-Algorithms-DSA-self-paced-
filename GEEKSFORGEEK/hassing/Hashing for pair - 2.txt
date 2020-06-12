@@ -1,0 +1,14 @@
+int sumExists(int arr[], int sizeOfArray, int sum)
+{
+    unordered_set<int> s; //Using an unoredered set
+ 
+     
+    for(int i=0;i<sizeOfArray;i++) //Iterating over the array
+    {
+      int temp=sum-arr[i]; 
+      if(temp>=0 && s.count(temp)!=0) //If temp exists in the array
+      return 1; //return
+      s.insert(arr[i]); //insert in set
+    }
+return 0;
+}

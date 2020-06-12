@@ -1,0 +1,21 @@
+
+int sumExists(int arr[], int sizeOfArray, int sum)
+{
+    unordered_set<int> s; //using an unorered set
+    for(int i = 0; i < sizeOfArray; i++)
+         s.insert(arr[i]); //Inserting all elements in the set
+     
+    for(int i=0;i<sizeOfArray;i++)
+    {
+       if(sum-arr[i]==arr[i]) //Taking care of cases like 4-2=2 as two 2's cannot exist in distinct array
+          continue;
+       else
+          {
+              if(s.count(sum-arr[i])!=0) //If we find the pair return 1
+              {
+                return 1;
+              }
+          }
+    }
+return 0; //return 0
+}

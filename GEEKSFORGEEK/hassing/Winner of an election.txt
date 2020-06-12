@@ -1,0 +1,29 @@
+pair <string,int> winner(string arr[],int n)
+{
+    // map to store count of frequency of each name
+        unordered_map<string,int>mp;
+        
+        
+        // storing the frequency of names in the map
+        for(int j=0;j<n;j++)
+        {
+            mp[arr[j]]++;
+        }
+        
+        int maxx=-1;
+        string answer="";
+        
+        // Iterating through the map to find the name with highest frequency
+        for(auto it=mp.begin();it!=mp.end();it++)
+        {
+            if(it->second>maxx)
+            {
+                maxx=it->second;
+                answer=it->first;
+            }
+            else if(it->second == maxx && answer.compare(it->first) > 0)
+                answer = it->first;
+        }
+        
+        return pair <string,int> (answer,maxx);
+}

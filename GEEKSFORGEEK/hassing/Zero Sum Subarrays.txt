@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+ long long arr[10000000];
+ unordered_map<long long,long long>mp;
+int main()
+ {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n; //input size of array
+       
+        long long sum=0; //variable sum=0
+        
+        for(long long i=0;i<n;i++)
+        {
+            cin>>arr[i]; //input array elements
+        }
+        
+        long long counter=0; //counter to store answer
+        for(long long i=0;i<n;i++)
+        {
+            sum+=arr[i];  //sum stores prefix sum
+            
+            if(sum==0) //if prefix sum is zero that means we encounter a zero sum subarray
+            {
+                counter++; //hence we increment the counter
+            }
+            
+            if(mp.count(sum)!=0) //If map contains the sum. This means we have previously seen the sum
+            {
+               counter+=mp[sum]; //add the value of sum to counter
+            }
+            
+             mp[sum]++; //increment the key 
+        }
+       
+       
+       cout<<counter<<endl; //print the answer
+    mp.clear();
+    }
+	return 0;
+}

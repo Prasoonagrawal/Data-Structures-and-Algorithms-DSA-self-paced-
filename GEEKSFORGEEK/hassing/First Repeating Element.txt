@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int a[10000000];
+unordered_map<int, int> um;
+
+int main(){
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int n;
+        cin >> n;
+        bool flag = false;
+        int ans = -1;
+        
+        // iterating through the array elements
+        // and increment the count in map
+        for(int i =0;i<n;i++){
+            cin >> a[i];
+            um[a[i]]++;
+        }
+        
+        // Iterating through the array elements 
+        // and check if frequency is greater than 1,
+        // then store that index in ans
+        for(int i =0;i<n;i++){
+            if(um[a[i]] > 1){
+                ans = i+1;
+                break;
+            }
+        }
+
+        cout << ans << endl;
+        um.clear();
+    }
+    
+
+    return 0;
+}

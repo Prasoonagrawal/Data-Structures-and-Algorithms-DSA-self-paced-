@@ -1,0 +1,23 @@
+int countNonRepeated(int arr[], int n)
+{
+    unordered_map<int,int>mp;
+    long long counter=0;
+    
+    // iterating through the array
+    // and storing the frequency of each elements
+    for(int i=0;i<n;i++)
+    {
+        mp[arr[i]]++;
+    }
+    
+    // Now, iterate through the array elements
+    // and check if frequency is 1, incremenet the counter
+    for(int i=0;i<n;i++)
+    {
+        if(mp[arr[i]]==1)
+        {
+            counter++;
+        }
+    }
+    return counter;
+}

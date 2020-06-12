@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+unordered_map<int, int> mp;
+unordered_set<int> s;
+vector<int> arr_s;
+
+int main() {
+	
+	int t;
+	cin >> t;
+	while(t--){
+	    int n;
+	    cin >> n;
+	    int arr[n];
+	    for(int i = 0;i<n;i++){
+	        cin >> arr[i];
+	        mp[arr[i]] = 1;
+	    }
+	    
+	    // finding elements and its pair
+	    for(int i = 0;i<n;i++){
+	        
+	        // check if pair exists or not
+	        // insert the element in set
+	        if(arr[i] > 0 && mp.find((-1)*arr[i]) != mp.end()){
+	            s.insert(arr[i]);
+	        }
+	    }
+	    
+	    // iterating through the map and storing the elements in vector
+	    for(auto it = s.begin(); it != s.end(); it++){
+	        arr_s.push_back(*it);
+	    }
+	    
+	    // sort the vector
+	    sort(arr_s.begin(), arr_s.end());
+	    
+	    // print element and its pair is present
+	    for(int x : arr_s){
+	        cout << x << " " << (-1)*(x) << " ";
+	    }
+	    
+	    // if set is empty, then no pair exists
+	    if(s.begin() == s.end()){
+	        cout << "0";
+	    }
+	    
+	    cout << endl;
+	    mp.clear();
+	    s.clear();
+	    arr_s.clear();
+	}
+	
+	return 0;
+}

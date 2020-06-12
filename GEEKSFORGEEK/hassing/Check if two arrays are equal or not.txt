@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+map <long long, long long>mp;
+int main()
+ {
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long n;
+        cin>>n;
+        
+        // increase the count of elements in first array
+        for(long long i=0;i<n;i++)
+        {
+            long long k;
+            cin>>k;
+            mp[k]++;
+        }
+        
+        // iterate through another array
+        // and decrement the count of elements
+        // in the map in which frequency of elements
+        // is stored for first array
+        for(long long i=0;i<n;i++)
+        {
+            long long k;
+            cin>>k;
+            mp[k]--;
+        }
+        
+        bool flag=false;
+        
+        // iterate through the map and check 
+        for(auto i=mp.begin();i!=mp.end();i++)
+        {
+            // if count of element in map is not zero
+            // it means two arrays are not equal
+            if(i->second!=0)
+            {
+                cout<<0<<endl;
+                flag=true;
+                break;
+            }
+        }
+        
+        // else, arrays are equal
+        if(flag==false)
+        cout<<1<<endl;
+        
+        mp.clear();
+    }
+	return 0;
+}

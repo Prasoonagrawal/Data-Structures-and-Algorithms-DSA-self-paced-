@@ -1,0 +1,33 @@
+int subArraySum(int arr[], int n, int sum)
+{
+	unordered_map<int, int> map;
+	
+	int curr_sum = 0;
+	int count=0; unordered_map<int,int>::iterator x;
+	
+	// iterating over the array elements
+    for (int i = 0; i < n; i++)
+	{
+	    // update the curr_sum
+		curr_sum = curr_sum + arr[i];
+		
+		// check if sum upto current element is equal to the given sum
+    	if (curr_sum == sum)
+		{
+			count++;
+		}
+		
+		// if map contans curr_sum - sum
+		// it means there is a subarray with sum of elements equal to sum
+		x=map.find(curr_sum-sum);
+		
+		// if x is present
+		// then count is equal to the number of times of occurrence of curr_sum-sum
+		if(x!=map.end())
+		count+=x->second;
+		map[curr_sum]++;
+	}
+	
+	return count;
+	
+}

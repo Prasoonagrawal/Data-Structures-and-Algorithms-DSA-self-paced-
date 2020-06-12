@@ -1,0 +1,21 @@
+vector<int> printNonRepeated(int arr[],int n)
+{
+    unordered_map<int,int>mp;
+	
+	// iterating through the elements and increment the count of elements    
+    for(int i=0;i<n;i++)
+    {
+        mp[arr[i]]++;
+    }
+    
+    // iterate through the elements and print the element where count in hash is equal to 1 and push it in vector
+    vector<int> v;
+    for(int i=0;i<n;i++)
+    {
+        if(mp[arr[i]]==1)
+        {
+            v.push_back(arr[i]);
+        }
+    }
+    return v;
+}
