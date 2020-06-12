@@ -1,0 +1,31 @@
+int isSumProperty(struct Node *node) {
+    int left_data = 0, right_data = 0;
+
+    // base case
+    if (node == NULL ||
+        (node->left == NULL && node->right == NULL))
+        return 1;
+    else {
+
+        // if left child is not null
+        // then store the value in left_Data
+        if (node->left != NULL)
+            left_data = node->left->data;
+
+        // if right child is not null
+        // then store the value in right_data
+        if (node->right != NULL)
+            right_data = node->right->data;
+
+        // if stored data of left and right child
+        // is equal to the current node data
+        // then this will return true
+        // So, recurse for left and right node
+        if ((node->data == left_data + right_data) &&
+            isSumProperty(node->left) &&
+            isSumProperty(node->right))
+            return 1;
+        else
+            return 0;
+    }
+}

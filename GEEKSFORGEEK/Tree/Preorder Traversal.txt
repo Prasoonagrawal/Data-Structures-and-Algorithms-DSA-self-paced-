@@ -1,0 +1,10 @@
+void preorder(struct Node* root)
+{
+    //Preorder is Data Left Right
+  if (root==NULL) //If root is null then we simply return
+    return;
+ cout << root->data << " "; //Print data
+  preorder(root->left);  //recurse left
+  preorder(root->right); //recurse right
+
+}

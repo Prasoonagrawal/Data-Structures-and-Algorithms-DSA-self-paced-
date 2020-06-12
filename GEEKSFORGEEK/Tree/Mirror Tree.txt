@@ -1,0 +1,15 @@
+void mirror(Node* node)
+{
+  if (node==NULL)
+    return;
+
+
+    /* do the subtrees */
+    mirror(node->left);
+    mirror(node->right);
+
+    /* swap the pointers in this node */
+    struct Node* temp= node->left;
+    node->left  = node->right;
+    node->right = temp;
+}

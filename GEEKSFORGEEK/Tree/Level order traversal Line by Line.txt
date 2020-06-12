@@ -1,0 +1,37 @@
+void levelOrder(struct Node* node)
+{
+    // initializing queue
+    queue<Node *> q;
+    q.push(node);
+
+
+    while(1)
+    {
+        int size = q.size();
+        if(size==0)
+            break;
+
+        // while queue is not empty
+        while(size>0)
+        {
+            // pick the front element from queue
+            Node * node = q.front();
+
+            // pop the element too
+            q.pop();
+            cout<<node->data<<" ";
+
+            // if left child exists
+            // push it into exists
+            if(node->left)
+                q.push(node->left);
+
+            // if left child exists
+            // push it into exists
+            if(node->right)
+                q.push(node->right);
+            size--;
+        }
+        cout<<"$ ";
+    }
+}
