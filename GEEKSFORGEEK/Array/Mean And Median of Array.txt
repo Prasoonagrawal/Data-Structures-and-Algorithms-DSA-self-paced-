@@ -1,0 +1,23 @@
+
+int median(int A[],int N)
+{
+    sort(A,A+N); //For median, we need to sort the array 
+    int median=0;
+    if(N%2 == 0) //If number of terms are even the median is average of two middle terms
+        median = ( A[N/2] + A[(N/2)-1])/2;
+    else
+        median = A[(N-1)/2]; //if number of terms are odd the middle term is the median
+    
+    return median;
+}
+
+int mean(int A[],int N) //mean is the sum of all numbers divided by the total terms
+{
+    long long sum=0;
+    for(int i=0;i<N;i++)
+    {
+        sum+=A[i];
+    }
+    return sum/N;
+   
+}
