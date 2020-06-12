@@ -1,0 +1,51 @@
+Node *minValueNode(Node *nod)
+{
+    Node *current = nod;
+    while(current->left !=NULL)
+        current = current->left;
+    return current;
+}
+
+Node* deleteNode(Node* root, int key){
+    
+    // base case
+    if (root == NULL) return root;
+    
+    // check if key is less than the data of root
+    if (key < root->data)
+        root->left = deleteNode(root->left, key);
+    
+    // else check if key is greater than data of root
+    else if (key > root->data)
+        root->right = deleteNode(root->right, key);
+    
+    // if key is same as root's key, then This is the node 
+    // to be deleted 
+    else
+    {
+        // node with only one child or no child 
+        if (root->left == NULL)
+        {
+            struct Node *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            struct Node *temp = root->left;
+            free(root);
+            return temp;
+        }
+        
+        // node with two children: Get the inorder successor (smallest 
+        // in the right subtree) 
+        struct Node* temp = minValueNode(root->right);
+        
+        // Copy the inorder successor's content to this node
+        root->data = temp->data;
+        
+        // Delete the inorder successor
+        root->right = deleteNode(root->right, temp->data);
+    } 
+    return root;
+}

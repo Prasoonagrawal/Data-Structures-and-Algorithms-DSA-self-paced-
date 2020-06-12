@@ -1,0 +1,31 @@
+void printNearNodesUtil(Node *root,int k1,int k2, vector <int> &res) 
+{
+    /* base case */
+    if ( root == NULL )  
+        return;  
+      
+    /* Since the desired o/p is sorted,  
+        recurse for left subtree first  
+        If root->data is greater than k1,  
+        then only we can get o/p keys  
+        in left subtree */
+    if ( k1 < root->data )  
+        printNearNodesUtil(root->left, k1, k2, res);  
+      
+    /* if root's data lies in range,  
+    then prints root's data */
+    if ( k1 <= root->data && k2 >= root->data )  
+        res.push_back (root->data);
+      
+    /* If root->data is smaller than k2, 
+        then only we can get o/p keys  
+        in right subtree */
+    if ( k2 > root->data )  
+        printNearNodesUtil(root->right, k1, k2, res);   
+}
+vector <int> printNearNodes(Node *root,int k1,int k2) 
+{
+    vector <int> res;
+    printNearNodesUtil (root, k1, k2, res);
+    return res;
+}
